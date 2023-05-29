@@ -1,0 +1,417 @@
+/* >>> TABLE OF CONTENTS:
+----------------------------------------
+# Base
+	- Typography
+	- Elements
+	- Links
+  - Layouts
+# Components
+	- Header
+	- Main
+    -Home Section
+    -About Section
+    -Works Section
+    -Skills Section
+    -Contact Section
+  -Single Works
+	- Footer
+---------------------------------------- */
+
+/* ----------
+# Base
+---------- */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+}
+
+.screen-reader-text {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  word-wrap: normal !important;
+}
+
+.screen-reader-text:focus {
+  background-color: #eee;
+  clip: auto !important;
+  clip-path: none;
+  color: #444;
+  display: block;
+  font-size: 1em;
+  height: auto;
+  left: 5px;
+  line-height: normal;
+  padding: 15px 23px 14px;
+  text-decoration: none;
+  top: 5px;
+  width: auto;
+  z-index: 100000; /* Above WP toolbar. */
+}
+
+/* ---------- Typography ---------- */
+
+@font-face {
+  font-family: 'Neue Black';
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  src: url(../fonts/TheNeue-Black.woff2) format('woff2');
+}
+
+body {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.025rem;
+  background-color: #e2e2e2;
+  color: #000;
+}
+
+h1,
+h2{
+  font-family: 'Neue Black', "Times New Roman", sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2rem;
+  line-height: 3rem;
+  margin: 0;
+}
+
+/* ---------- Elements ---------- */
+
+article {
+  max-width: fit-content;
+}
+
+svg {
+  fill: white;
+  display: block;
+  margin: 0 auto;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+li {
+  list-style: none;
+}
+
+/* ---------- Links ---------- */
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  color: red;
+}
+
+/* ---------- Layouts ---------- */
+
+@media (min-width: 100rem) {
+  body {
+        display: grid;
+        grid-template-columns: 1fr minmax(0, 100rem) 1fr;
+        grid-template-areas:
+          "header header header"
+          ". main ."
+          "footer footer footer";
+  }
+}
+
+header {
+  grid-area: header;
+}
+
+main {
+  grid-area: main;
+}
+
+footer {
+  grid-area: footer;
+}
+
+/* ----------
+# Components
+---------- */
+
+
+/* ---------- Header ---------- */
+
+header {
+  font-family: 'Neue Black', "Times New Roman", sans-serif;
+  text-transform: uppercase;
+  position: absolute;
+  top: 0;
+}
+
+header img {
+  padding: 0.5rem;
+}
+
+header nav {
+  background-color: #bbbbbb;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+header ul {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  text-align: center;
+  padding-left: 0;
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+
+@media (min-width: 62.5rem) {
+  header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    padding-bottom: 1rem;
+    background: linear-gradient(#e2e2e2 80%, #e2e2e250 90%, transparent);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  header a {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+
+  header nav {
+    position: relative;
+    max-width: 100rem;
+    background-color: transparent;
+  }
+
+  .header-nav svg {
+    display: inline;
+    vertical-align: middle;
+    padding-right: 1rem;
+    fill: #000;
+  }
+}
+
+/* ---------- Main ---------- */
+
+main {
+  margin: 0 2rem;
+}
+
+/* --- Home Section --- */
+
+#home {
+  height: 100vh;
+  position: relative;
+  top: 0;
+}
+
+.entry-content {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.portrait {
+  border-radius: 100%;
+  border: 2px solid #fff;
+  animation-iteration-count: 1;
+  box-shadow: 0 0 2rem #000;
+  animation: appear 2s;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1.5rem;
+}
+
+.entry-text {
+  text-shadow: 2px 2px #fff;
+}
+
+@media (min-width: 62.5rem) {
+  .portrait {
+    margin: 0;
+  }
+  .entry-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+}
+
+.h1-animate {
+  animation: leftright 2s;
+  animation-iteration-count: 1;
+}
+
+.h2-animate {
+  animation: rightleft 2s;
+  animation-iteration-count: 1;
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+}
+
+@keyframes leftright {
+  0%   { 
+    transform: translateX(-30rem);
+    opacity: 0;
+   }
+}
+
+@keyframes rightleft {
+  0%   { 
+    transform: translateX(30rem);
+    opacity: 0;
+   }
+}
+
+@keyframes appear {
+  0%   { 
+    opacity: 0;
+   }
+}
+
+.arrows {
+	width: 4rem;
+	height: 5rem;
+	position: absolute;
+	left: 50%;
+  margin-left: -1.8rem;
+	bottom: 4rem;
+}
+
+@media (min-width: 62.5rem) {
+  .arrows {
+    bottom: 0rem;
+  }
+}
+
+.arrows path {
+	stroke: #ff0000;
+	fill: transparent;
+	stroke-width: 1px;	
+	animation: arrow 2s infinite;
+	-webkit-animation: arrow 2s infinite; 
+}
+
+@keyframes arrow
+{
+  0% {opacity:0}
+  40% {opacity:1}
+  80% {opacity:0}
+  100% {opacity:0}
+}
+
+.arrows path.a1 {
+	animation-delay:-1s;
+}
+
+.arrows path.a2 {
+	animation-delay:-0.5s;
+}
+
+.arrows path.a3 {	
+	animation-delay:0s;
+}
+
+/* --- About Section --- */
+
+.about-container {
+  background-color: #fff;
+  padding: 0.25rem 1.5rem;
+}
+
+/* --- Works Section --- */
+
+.design-images {
+  padding: 1rem;
+}
+
+.design-container {
+  background-color: #474747;
+  font-size: 0;
+  width: fit-content;
+}
+
+/* --- Skills Section --- */
+
+
+#skills li:before {
+  content: '✓ '
+}
+
+.skills-container ul {
+  margin-top: 0;
+}
+
+.skills-container h3 {
+  margin-bottom: 0.25rem;
+}
+
+
+@media (min-width: 37.5rem) {
+  .skills-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* --- Contact Section --- */
+
+#contact svg {
+  fill: black;
+}
+
+.contact-title {
+  margin: 0;
+}
+
+.contact-items-container {
+  background-color: #fff;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-around;
+  box-shadow: 0.5rem 0.5rem 1.5rem #000;
+}
+
+/* ---------- Single Works ---------- */
+
+
+/* ---------- Footer ---------- */
+
+footer {
+  text-align: center;
+  margin-top: 1.5rem;
+  margin-bottom: 5rem;
+}
+
+@media (min-width: 62.5rem) {
+  footer {
+    margin: 1.5rem;
+  }
+}
